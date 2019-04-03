@@ -27,7 +27,9 @@ def count_elements(array)
 end
 
 def merge_data(keys, data)
-        
+    keys.each do |person|
+        person.merge!(data[0][person[:first_name]])
+    end
 end
 
 def find_cool(array)
@@ -38,5 +40,10 @@ def find_cool(array)
     end
 end
 
-def organize_schools
+def organize_schools(schools)
+    schools.each_with_object({}) do |school, hash|
+        hash.merge!(school[1][:location] => [school[0]]) do |key, old, new| 
+            old + new
+        end
+    end
 end
