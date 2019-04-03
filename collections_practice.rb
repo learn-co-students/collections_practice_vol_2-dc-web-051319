@@ -31,13 +31,11 @@ def merge_data(keys, data)
 end
 
 def find_cool(array)
-    rtn = []
-    array.each do |hash|
+    array.each_with_object([]) do |hash, a|
         if hash[:temperature] == "cool" 
-            rtn << hash
+            a << hash
         end
     end
-    rtn
 end
 
 def organize_schools
